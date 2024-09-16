@@ -83,8 +83,11 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: black !important;
+  background-image: radial-gradient(white 100px, transparent 700px);
+  height: 100vh; /* Ensure the background covers the entire viewport height */
+  margin: 0; /* Remove default margin */
 }
 
 body {

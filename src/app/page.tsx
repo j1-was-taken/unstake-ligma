@@ -104,7 +104,7 @@ const Home: React.FC = () => {
 
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '100px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100vw', height: '100vh' }}>
       <h1>Unstake Your Ligma Tokens</h1>
       {!walletAddress ? (
         <button onClick={handleConnectWallet} className={styles.button}>Connect Wallet</button>
