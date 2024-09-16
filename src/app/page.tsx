@@ -110,7 +110,7 @@ const Home: React.FC = () => {
         <button onClick={handleConnectWallet} className={styles.button}>Connect Wallet</button>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', padding: 20, gap: 5, maxWidth: 300, justifyContent: "center", alignItems: 'center' }}>
-          <label htmlFor="input">xligma token amount</label>
+          <label htmlFor="input">token amount</label>
           <input type="text" value={amount} onChange={e => setAmount(e.target.value)} style={{display: 'flex', textAlign: 'center', justifyContent: 'center', alignItems: 'center'}} />
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <button onClick={handleUnstakeLigma} className={styles.button} style={{ width: '100px', height: '20px' }}>Unstake Ligma</button>
