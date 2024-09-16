@@ -114,13 +114,13 @@ const Home: React.FC = () => {
           <input type="text" value={amount} onChange={e => setAmount(e.target.value)} style={{display: 'flex', textAlign: 'center', justifyContent: 'center', alignItems: 'center'}} />
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <button onClick={handleUnstakeLigma} className={styles.button} style={{ width: '100px', height: '20px' }}>Unstake Ligma</button>
-            <a href="#" onClick={handleSetMaxUnstake} style={{ marginLeft: '10px', color: 'blue', textDecoration: 'underline' }}>Max:{maxXLigma}</a>
           </div>
+          <a href="#" onClick={handleSetMaxUnstake} style={{ color: 'blue', textDecoration: 'underline' }}>Max:{maxXLigma}</a>
 
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <button onClick={handleStakeLigma} className={styles.button} style={{ width: '100px', height: '20px' }}>Stake Ligma</button>
-            <a href="#" onClick={handleSetMaxStake} style={{ marginLeft: '10px', color: 'blue', textDecoration: 'underline' }}>Max:{String(maxLigma)}</a>
           </div>
+          <a href="#" onClick={handleSetMaxStake} style={{ color: 'blue', textDecoration: 'underline' }}>Max:{String(maxLigma)}</a>
 
           <p style={{ wordWrap: 'break-word' }} dangerouslySetInnerHTML={{ __html: textStake }}></p>
         </div>
