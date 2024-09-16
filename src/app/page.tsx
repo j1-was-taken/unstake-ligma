@@ -122,7 +122,7 @@ const Home: React.FC = () => {
           </div>
           <a href="#" onClick={handleSetMaxStake} style={{ color: 'blue', textDecoration: 'underline' }}>Max:{String(maxLigma)}</a>
 
-          <p style={{ wordWrap: 'break-word' }} dangerouslySetInnerHTML={{ __html: textStake }}></p>
+          <p style={{ overflowWrap: 'anywhere', textAlign: 'center' }} dangerouslySetInnerHTML={{ __html: textStake }}></p>
         </div>
       )}
     </div>
