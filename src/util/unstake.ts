@@ -51,27 +51,27 @@ export const unstakeLigmaTokens = async (payer: PublicKey, amount: number) => {
   const xligmaTokenAccount = await getAssociatedTokenAddress(XLIGMA_ADDRESS, payer);
   const ligmaTokenAccount = await getAssociatedTokenAddress(LIGMA_ADDRESS, payer);
 
-  // if (ligmaTokenAccount === null) {
-  //   const createLigmaAccountInstructions = new Transaction()
-  //     .add(
-  //       ComputeBudgetProgram.setComputeUnitPrice({ microLamports: 1_000_000 }),
-  //       ComputeBudgetProgram.setComputeUnitLimit({ units: 100_000 }),
-  //       createAssociatedTokenAccountInstruction(
-  //         payer,
-  //         ligmaTokenAccount,
-  //         payer,
-  //         LIGMA_ADDRESS
-  //       )
-  //     );
+  if (ligmaTokenAccount === null) {
+    const createLigmaAccountInstructions = new Transaction()
+      .add(
+        ComputeBudgetProgram.setComputeUnitPrice({ microLamports: 1_000_000 }),
+        ComputeBudgetProgram.setComputeUnitLimit({ units: 100_000 }),
+        createAssociatedTokenAccountInstruction(
+          payer,
+          ligmaTokenAccount,
+          payer,
+          LIGMA_ADDRESS
+        )
+      );
 
-  //   console.log('Creating Ligma Account...')
+    console.log('Creating Ligma Account...')
 
-  //   // Send the transaction
-  //   const signedTransaction = await solana.solflare.signTransaction(createLigmaAccountInstructions);
-  //   const signature = await connection.sendTransaction(signedTransaction);
+    // Send the transaction
+    const signedTransaction = await solana.solflare.signTransaction(createLigmaAccountInstructions);
+    const signature = await connection.sendTransaction(signedTransaction);
 
-  //   console.log(`...Ligma Account Created at tx: ${signature}`)
-  // }
+    console.log(`...Ligma Account Created at tx: ${signature}`)
+  }
 
   const dataFunctionName = '5a5f6b2acd7c32e1fe';
   const splAmount = Buffer.alloc(8);
