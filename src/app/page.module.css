@@ -18,6 +18,20 @@
   font-family: var(--font-mono);
 }
 
+.button {
+  position: relative;
+  height: 40px;
+  width: 100px;
+  background-color: #000000;
+  border: 3px solid #000000;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'cartoon';
+  cursor: pointer;
+  transition: transform 0.15s ease;
+  z-index: 5;
+}
+
 .description a {
   display: flex;
   justify-content: center;

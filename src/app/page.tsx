@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { PublicKey } from '@solana/web3.js';
 import { connectWallet, unstakeLigmaTokens, stakeLigmaTokens, getAccountBalance } from '../util/unstake';
+import styles from "./page.module.css";
 
 const Home: React.FC = () => {
   const [walletAddress, setWalletAddress] = useState<string | null>(null);
@@ -106,18 +107,18 @@ const Home: React.FC = () => {
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '100px' }}>
       <h1>Unstake Your Ligma Tokens</h1>
       {!walletAddress ? (
-        <button onClick={handleConnectWallet}>Connect Wallet</button>
+        <button onClick={handleConnectWallet} className={styles.button}>Connect Wallet</button>
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', padding: 20, gap: 5, maxWidth: 300 }}>
-          <label htmlFor="input" style={{marginLeft: "37px"}}>xligma token amount</label>
-          <input type="text" value={amount} onChange={e => setAmount(e.target.value)} />
+        <div style={{ display: 'flex', flexDirection: 'column', padding: 20, gap: 5, maxWidth: 300, justifyContent: "center", alignItems: 'center' }}>
+          <label htmlFor="input">xligma token amount</label>
+          <input type="text" value={amount} onChange={e => setAmount(e.target.value)} style={{display: 'flex', textAlign: 'center', justifyContent: 'center', alignItems: 'center'}} />
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <button onClick={handleUnstakeLigma} style={{ width: '100px', height: '20px' }}>Unstake Ligma</button>
+            <button onClick={handleUnstakeLigma} className={styles.button} style={{ width: '100px', height: '20px' }}>Unstake Ligma</button>
             <a href="#" onClick={handleSetMaxUnstake} style={{ marginLeft: '10px', color: 'blue', textDecoration: 'underline' }}>Max:{maxXLigma}</a>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center' }}>
-            <button onClick={handleStakeLigma} style={{ width: '100px', height: '20px' }}>Stake Ligma</button>
+            <button onClick={handleStakeLigma} className={styles.button} style={{ width: '100px', height: '20px' }}>Stake Ligma</button>
             <a href="#" onClick={handleSetMaxStake} style={{ marginLeft: '10px', color: 'blue', textDecoration: 'underline' }}>Max:{String(maxLigma)}</a>
           </div>
 
