@@ -16,7 +16,6 @@ import { ASSOCIATED_TOKEN_PROGRAM_ID, createAssociatedTokenAccountInstruction, g
 import bs58 from 'bs58'
 
 // Constants
-const RPC_URL = 'https://solana-mainnet.core.chainstack.com/c66e6078957a0376aae2632af596dd66/';
 const LIGMA_PROGRAM_ID = new PublicKey("pLigmFBt3J3gLeZv1tehqZ3RhWcMmTkGart6oN9tqkX");
 const LIGMA_ADDRESS = new PublicKey("node3SHFNF7h6N9jbztfVcXrZcvAJdns1xAV8CbYFLG");
 const XLIGMA_ADDRESS = new PublicKey("xNodeyB1u8WNrKQJqfucbKDMq7LYcAQfYXmqVdDj9M5");
@@ -47,8 +46,7 @@ export const connectWallet = async (): Promise<string | null> => {
   return null;
 };
 
-export const unstakeLigmaTokens = async (payer: PublicKey, amount: number) => {
-  const connection = new Connection(RPC_URL, 'finalized');
+export const unstakeLigmaTokens = async (payer: PublicKey, amount: number, connection: Connection) => {
   const solana = window as any;
 
   const xligmaTokenAccount = await getAssociatedTokenAddress(XLIGMA_ADDRESS, payer);
@@ -160,8 +158,7 @@ export const unstakeLigmaTokens = async (payer: PublicKey, amount: number) => {
   }
 };
 
-export const stakeLigmaTokens = async (payer: PublicKey, amount: number) => {
-  const connection = new Connection(RPC_URL, 'finalized');
+export const stakeLigmaTokens = async (payer: PublicKey, amount: number, connection: Connection) => {
   const solana = window as any;
 
   console.log('connection worked');
@@ -272,8 +269,7 @@ export const stakeLigmaTokens = async (payer: PublicKey, amount: number) => {
   }
 };
 
-export const getAccountBalance = async (payer: PublicKey, account: PublicKey) => {
-  const connection = new Connection(RPC_URL, 'finalized');
+export const getAccountBalance = async (payer: PublicKey, account: PublicKey, connection: Connection) => {
 
   try {
     const ligmaAta = await getAssociatedTokenAddress(account, payer);
