@@ -85,7 +85,7 @@ body {
   overflow-x: hidden;
   background-color: black;
   color: black !important;
-  background-image: radial-gradient(white 100px, transparent 700px);
+  background-image: linear-gradient(65deg, #cc85ff, #eaccff, #eaccff, #eaccff, #eaccff, #cc85ff);
   height: 100vh; /* Ensure the background covers the entire viewport height */
   margin: 0; /* Remove default margin */
 }

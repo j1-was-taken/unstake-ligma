@@ -119,17 +119,18 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100vw', height: '100vh' }}>
-      <h1>Ligma Staking Tool</h1>
-      <h6>developed by @j1_was_taken</h6>
+    <div className={styles.pageContainer}>
+      <h1 className={styles.title}>Ligma Staking Tool</h1>
       <br />
       {!walletAddress ? (
         <>
+
           <input
             type="text"
             value={RPC_URL}
             onChange={(e) => setRPC_URL(e.target.value)}
             placeholder="HTTP RPC URL"
+            className={styles.input}
           />
 
           <br />
@@ -143,18 +144,38 @@ const Home: React.FC = () => {
           </button>
         </>
       ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', padding: 20, gap: 5, maxWidth: 300, justifyContent: "center", alignItems: 'center' }}>
-          <label htmlFor="input">token amount</label>
-          <input type="text" value={amount} onChange={e => setAmount(e.target.value)} style={{ display: 'flex', textAlign: 'center', justifyContent: 'center', alignItems: 'center' }} />
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <button onClick={handleUnstakeLigma} className={styles.button} style={{ width: '100px', height: '20px' }}>Unstake Ligma</button>
-          </div>
-          <a href="#" onClick={handleSetMaxUnstake} style={{ color: 'blue', textDecoration: 'underline' }}>Max:{maxXLigma}</a>
 
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <button onClick={handleStakeLigma} className={styles.button} style={{ width: '100px', height: '20px' }}>Stake Ligma</button>
+        <div style={{ display: 'flex', flexDirection: 'column', padding: 20, gap: 5, maxWidth: 300, justifyContent: "center", alignItems: 'center' }}>
+          <h2 style={{textDecoration: "underline"}}>My Staked Balance</h2>
+          <h3>{maxXLigma} $LIGMA</h3>
+          <br/>
+          <h4 style={{color: "gray", textDecoration: "underline"}}>My Available Balance</h4>
+          <h5 style={{color: "gray"}}>{maxLigma} $LIGMA</h5>
+          <br/>
+          <label className={styles.tokenAmount} htmlFor="input">token amount</label>
+          <input type="text" value={amount} onChange={e => setAmount(e.target.value)} className={styles.input} />
+
+          <br />
+
+          <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <button onClick={handleUnstakeLigma} className={styles.button} >Unstake Ligma</button>
+            </div>
+            <a href="#" onClick={handleSetMaxUnstake} style={{ color: 'blue', textDecoration: 'underline' }}>Max:{maxXLigma}</a>
+
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <button onClick={handleStakeLigma} className={styles.button} >Stake Ligma</button>
+            </div>
+            <a href="#" onClick={handleSetMaxStake} style={{ color: 'blue', textDecoration: 'underline' }}>Max:{String(maxLigma)}</a>
           </div>
-          <a href="#" onClick={handleSetMaxStake} style={{ color: 'blue', textDecoration: 'underline' }}>Max:{String(maxLigma)}</a>
+
+          <br />
 
           <p style={{ overflowWrap: 'anywhere', textAlign: 'center' }} dangerouslySetInnerHTML={{ __html: textStake }}></p>
         </div>

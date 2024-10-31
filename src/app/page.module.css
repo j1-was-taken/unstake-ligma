@@ -18,18 +18,38 @@
   font-family: var(--font-mono);
 }
 
+.tokenAmount {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+}
+
 .button {
   position: relative;
-  height: 40px;
-  width: 100px;
   background-color: #000000;
   border: 3px solid #000000;
   border-radius: 5px;
   color: #ffffff;
-  font-family: 'cartoon';
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 25px;
+  margin-bottom: 5px;
   cursor: pointer;
-  transition: transform 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
   z-index: 5;
+}
+
+.button:not(:disabled):hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.button:not(:disabled):active {
+  transform: scale(0.95);
+}
+
+.button:disabled {
+  background-color: grey;
+  color: #666666;
+  cursor: not-allowed;
 }
 
 .description a {
@@ -119,10 +139,50 @@
   transform: translateZ(0);
 }
 
+.title {
+  color: #000000;
+  font-size: 50px;
+}
+
+.input {
+  background: linear-gradient(135deg, #7f7f7f, #ffffff, #ffffff, #ffffff, #ffffff, #7f7f7f);  
+  border-radius: 5px;
+  border-color: rgb(0, 0, 0);
+  border-width: 3px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  overflow: auto;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-block;
+  font-size: clamp(0px, 6.5vw, 16px);
+  font-family: inherit;
+  height: clamp(0px, 8vw, 20px);
+  width: 200px;
+  max-width: 100%;
+}
+
+.pageContainer {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
 .logo {
   position: relative;
 }
+
 /* Enable hover only on non-touch devices */
+@font-face {
+  font-family: 'hoefler';
+  src: url('/fonts/hoefler.ttf') format('truetype');
+}
+
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
     background: rgba(var(--card-rgb), 0.1);
@@ -193,11 +253,9 @@
     border-radius: 0;
     border: none;
     border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
-    background: linear-gradient(
-      to bottom,
-      rgba(var(--background-start-rgb), 1),
-      rgba(var(--callout-rgb), 0.5)
-    );
+    background: linear-gradient(to bottom,
+        rgba(var(--background-start-rgb), 1),
+        rgba(var(--callout-rgb), 0.5));
     background-clip: padding-box;
     backdrop-filter: blur(24px);
   }
@@ -208,11 +266,9 @@
     inset: auto 0 0;
     padding: 2rem;
     height: 200px;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgb(var(--background-end-rgb)) 40%
-    );
+    background: linear-gradient(to bottom,
+        transparent 0%,
+        rgb(var(--background-end-rgb)) 40%);
     z-index: 1;
   }
 }
@@ -238,6 +294,7 @@
   from {
     transform: rotate(360deg);
   }
+
   to {
     transform: rotate(0deg);
   }
