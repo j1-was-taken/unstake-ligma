@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "stake/unstake ligma",
-  description: "user developed stake/unstake ligma",
+  title: "Ligma Staking",
+  description: "3rd party ligma staking tool for when ligma\'s is not working! :D",
 };
 
 export default function RootLayout({
