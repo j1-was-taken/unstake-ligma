@@ -180,7 +180,8 @@ const Home: React.FC = () => {
           <br />
 
           <h4 style={{ maxWidth: "330px" }}>Default Wallet Connect</h4>
-
+          <h4 style={{ maxWidth: "330px" }}>(https://solana.publicnode.com)</h4>
+          
           <button
             onClick={handleConnectWalletDefault}
             className={styles.buttonConnect}
