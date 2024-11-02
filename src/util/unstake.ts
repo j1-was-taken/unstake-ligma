@@ -51,7 +51,6 @@ export const unstakeLigmaTokens = async (payer: PublicKey, amount: number, conne
 
   const xligmaTokenAccount = await getAssociatedTokenAddress(XLIGMA_ADDRESS, payer);
   const ligmaTokenAccount = await getAssociatedTokenAddress(LIGMA_ADDRESS, payer);
-  console.log(ligmaTokenAccount.toBase58());
 
   // Check if the ligmaTokenAccount is initialized
   const accountInfo = await connection.getAccountInfo(ligmaTokenAccount);
@@ -160,8 +159,6 @@ export const unstakeLigmaTokens = async (payer: PublicKey, amount: number, conne
 
 export const stakeLigmaTokens = async (payer: PublicKey, amount: number, connection: Connection) => {
   const solana = window as any;
-
-  console.log('connection worked');
 
   let xligmaTokenAccount = await getAssociatedTokenAddress(XLIGMA_ADDRESS, payer);
   let ligmaTokenAccount = await getAssociatedTokenAddress(LIGMA_ADDRESS, payer);

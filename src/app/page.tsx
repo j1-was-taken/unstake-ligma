@@ -26,7 +26,9 @@ const Home: React.FC = () => {
           try {
             const response = await solana.solflare.connect({ onlyIfTrusted: true });
             console.log('Wallet already connected')
-            setWalletAddress(response.publicKey.toString());
+            if (response.publicKey) {
+              setWalletAddress(response.publicKey.toString());
+            }
           } catch (error) {
             console.log(error)
           }
@@ -53,6 +55,38 @@ const Home: React.FC = () => {
     }
   };
 
+  const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+  const handleConnectWalletDefault = async () => {
+    try {
+      const connection = new Connection("https://solana.publicnode.com", 'finalized');
+      await connection.getVersion();
+
+      const address = await connectWallet();
+      if (address) {
+        setWalletAddress(address);
+        setMaxBalancesDefault();
+      }
+    } catch (error) {
+      console.log(error)
+      alert('Invalid RPC Connection')
+    }
+  };
+
+  const setMaxBalancesDefault = async () => {
+    const connection = new Connection("https://solana.publicnode.com", 'finalized');
+
+    if ('solflare' in window) {
+      const solana = window as any;
+      const ligmaBalance = await getAccountBalance(new PublicKey(solana.solflare.publicKey), LIGMA_ADDRESS, connection);
+      setMaxLigma(ligmaBalance);
+      const xligmaBalance = await getAccountBalance(new PublicKey(solana.solflare.publicKey), XLIGMA_ADDRESS, connection);
+      setMaxXLigma(xligmaBalance);
+    }
+
+    setRPC_URL("https://solana.publicnode.com");
+  }
+
   const setMaxBalances = async () => {
     const connection = new Connection(RPC_URL, 'finalized');
 
@@ -71,7 +105,6 @@ const Home: React.FC = () => {
     if (walletAddress) {
       try {
         const { signature, confirmation } = await unstakeLigmaTokens(new PublicKey(walletAddress), parseFloat(amount), connection);
-        console.log(signature)
         setTextStake('https://solscan.io/tx/' + signature + '<br /><br />Confirming Transaction...');
         const confirmationStatus = await confirmation;
         setTextStake('https://solscan.io/tx/' + signature + '<br /><br />' + confirmationStatus);
@@ -125,6 +158,8 @@ const Home: React.FC = () => {
       {!walletAddress ? (
         <>
 
+          <h4 style={{ maxWidth: "330px" }}>Custom RPC Wallet Connect</h4>
+
           <div className={styles.httpContainer}>
             <input
               type="text"
@@ -138,20 +173,20 @@ const Home: React.FC = () => {
               onClick={handleConnectWallet}
               className={styles.buttonConnect}
             >
-              Connect Wallet
+              Connect
             </button>
           </div>
 
-
           <br />
 
-          <h4 style={{maxWidth: "330px"}}>Connect Using Your Own Node or the Official Public Endpoint Below</h4>
-          <br />
-          <h2 style={{maxWidth: "330px", fontSize: "20px"}}>https://solana.publicnode.com</h2>
+          <h4 style={{ maxWidth: "330px" }}>Default Wallet Connect</h4>
 
-
-          <br />
-
+          <button
+            onClick={handleConnectWalletDefault}
+            className={styles.buttonConnect}
+          >
+            Connect
+          </button>
 
         </>
       ) : (
