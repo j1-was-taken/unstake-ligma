@@ -37,6 +37,20 @@
   z-index: 5;
 }
 
+.buttonConnect {
+  position: relative;
+  background-color: #000000;
+  border: 3px solid #000000;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 25px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  z-index: 5;
+  text-align: center;
+}
+
 .button:not(:disabled):hover {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
   cursor: pointer;
@@ -142,6 +156,7 @@
 .title {
   color: #000000;
   font-size: 50px;
+  max-width: 330px;
 }
 
 .input {
@@ -172,6 +187,15 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
+}
+
+.httpContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  max-width: 330px;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo {

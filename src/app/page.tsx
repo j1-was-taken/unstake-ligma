@@ -125,33 +125,44 @@ const Home: React.FC = () => {
       {!walletAddress ? (
         <>
 
-          <input
-            type="text"
-            value={RPC_URL}
-            onChange={(e) => setRPC_URL(e.target.value)}
-            placeholder="HTTP RPC URL"
-            className={styles.input}
-          />
+          <div className={styles.httpContainer}>
+            <input
+              type="text"
+              value={RPC_URL}
+              onChange={(e) => setRPC_URL(e.target.value)}
+              placeholder="HTTP RPC URL"
+              className={styles.input}
+            />
+
+            <button
+              onClick={handleConnectWallet}
+              className={styles.buttonConnect}
+            >
+              Connect Wallet
+            </button>
+          </div>
+
 
           <br />
 
-          <button
-            onClick={handleConnectWallet}
-            className={styles.button}
-            style={{ textAlign: 'center' }}
-          >
-            Connect Wallet
-          </button>
+          <h4 style={{maxWidth: "330px"}}>Connect Using Your Own Node or the Official Public Endpoint Below</h4>
+          <br />
+          <h2 style={{maxWidth: "330px", fontSize: "20px"}}>https://solana.publicnode.com</h2>
+
+
+          <br />
+
+
         </>
       ) : (
 
         <div style={{ display: 'flex', flexDirection: 'column', padding: 20, gap: 5, maxWidth: 300, justifyContent: "center", alignItems: 'center' }}>
-          <h2 style={{textDecoration: "underline"}}>My Staked Balance</h2>
+          <h2 style={{ textDecoration: "underline" }}>My Staked Balance</h2>
           <h3>{maxXLigma} $LIGMA</h3>
-          <br/>
-          <h4 style={{color: "gray", textDecoration: "underline"}}>My Available Balance</h4>
-          <h5 style={{color: "gray"}}>{maxLigma} $LIGMA</h5>
-          <br/>
+          <br />
+          <h4 style={{ color: "gray", textDecoration: "underline" }}>My Available Balance</h4>
+          <h5 style={{ color: "gray" }}>{maxLigma} $LIGMA</h5>
+          <br />
           <label className={styles.tokenAmount} htmlFor="input">token amount</label>
           <input type="text" value={amount} onChange={e => setAmount(e.target.value)} className={styles.input} />
 
